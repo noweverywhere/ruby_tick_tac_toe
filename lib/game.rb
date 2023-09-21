@@ -12,6 +12,9 @@ class Game
       Player.new(name: 'Player 2', symbol: 'O')
     ]
     @current_player_index = nil
+  end
+
+  def start
     print_message welcome_message
     choose_random_player
     play_turn until winner? || TicTacToe.stalemate?(@players, @board.grid)
