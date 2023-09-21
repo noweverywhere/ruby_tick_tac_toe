@@ -12,7 +12,9 @@ That Session class would look something  like this:
 
 ```ruby
 class Session
-  def initialize
+  def initialize(input: $stdin, output: $stdout)
+    @input = input
+    @output = output
     @game = Game.new
     print_message @game.start
   end
@@ -31,11 +33,11 @@ class Session
   end
 
   def player_input
-    raw_input = gets.chomp
+    @input.gets.chomp
   end
 
   def print_message(message)
-    puts (message.is_a?(Array) ? message.flatten.join("\r") : message).gsub(/^\s+/, '')
+    @output.puts (message.is_a?(Array) ? message.flatten.join("\r") : message).gsub(/^\s+/, '')
   end
 end
 ```
