@@ -1,12 +1,27 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    debug (1.8.0)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
+    io-console (0.6.0)
+    irb (1.8.1)
+      rdoc
+      reline (>= 0.3.8)
     minitest (5.20.0)
+    psych (5.1.0)
+      stringio
+    rdoc (6.5.0)
+      psych (>= 4.0.0)
+    reline (0.3.8)
+      io-console (~> 0.5)
+    stringio (3.0.8)
 
 PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  debug (~> 1.8)
   minitest
 
 BUNDLED WITH
