@@ -5,7 +5,8 @@ require_relative 'tic_tac_toe'
 class Game
   BOARD_SIZE = 3
 
-  def initialize
+  def initialize(user_input: $stdin)
+    @user_input = user_input
     @board = Board.new(dimensions: BOARD_SIZE)
     @players = [
       Player.new(name: 'Player 1', symbol: 'X'),
@@ -21,6 +22,7 @@ class Game
 
     print_message('Game Over!')
     print_message @board.render
+    :game_over
   end
 
   def play_turn
@@ -56,7 +58,7 @@ class Game
 
   def ask_input
     print_message "#{current_player.name}'s input:"
-    raw_input = gets.chomp
+    raw_input = @user_input.gets.chomp
     # I am not sure how you feel about regex. I am aware that my regex is more permissive
     # than the <number>,<number> format. It will accept any non-word character as a break
     # between the two numbers
