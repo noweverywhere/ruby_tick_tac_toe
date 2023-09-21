@@ -18,7 +18,7 @@ class TicTacToe
     # be removed and the values derived from the properties of the grid, or else
     # they could be passed in from the Game instance. My intuition is telling me
     # that using a hash is going to be better as a representation of the board state.
-    # I think at that point I will store the dimensions on that hash
+    # I think at that point I will store the dimensions as a prop on that hash
     (0..2).any? { |index| grid.all? { |a| a.slice(index) == player } }
   end
 

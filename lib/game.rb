@@ -6,32 +6,34 @@ class Game
   BOARD_SIZE = 3
 
   def initialize
-    @board = Board.new(dimensions: BOARD_SIZE)
     @players = [
       Player.new(name: 'Player 1', symbol: 'X'),
       Player.new(name: 'Player 2', symbol: 'O')
     ]
     @current_player_index = nil
-    print_message welcome_message
-    choose_random_player
-    play_turn until winner? || TicTacToe.stalemate?(@players, @board.grid)
-
-    print_message('Game Over!')
-    print_message @board.render
   end
 
-  def play_turn
-    prompt_turn
-    print_message @board.render
-    x, y = ask_move
+  def start
+    @board = Board.new(dimensions: BOARD_SIZE)
+    choose_random_player
+
+    [welcome_message, prompt_turn, @board.render]
+  end
+
+  def play(player_input)
+    x, y = player_input
     @board.set_cell_value(x, y, current_player)
     set_next_players_turn
+  end
+
+  def over?
+    winner? || TicTacToe.stalemate?(@players, @board.grid)
   end
 
   private
 
   def prompt_turn
-    print_message turn_message
+    turn_message
   end
 
   def winner?
@@ -44,16 +46,11 @@ class Game
     # using splat only to show I know how to use it, but normally I would probably just have passed the array
     return input if TicTacToe.valid_move?(BOARD_SIZE, @board.grid, *input)
 
-    print_message ["'#{input}' is not a valid move.", turn_message]
-    print_message @board.render
-
-    # using recursion
-    ask_move
+    ["'#{input}' is not a valid move.", prompt_turn, @board.render, ask_move]
   end
 
   def ask_input
     print_message "#{current_player.name}'s input:"
-    raw_input = gets.chomp
     # I am not sure how you feel about regex. I am aware that my regex is more permissive
     # than the <number>,<number> format. It will accept any non-word character as a break
     # between the two numbers
@@ -86,10 +83,6 @@ class Game
 
   def welcome_message
     ['Welcome to Tic-Tac-Toe!', valid_format_explanation]
-  end
-
-  def print_message(message)
-    puts (message.is_a?(Array) ? message.join("\r") : message).gsub(/^\s+/, '')
   end
 
   def valid_format_explanation

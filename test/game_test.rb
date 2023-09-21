@@ -4,15 +4,19 @@ require 'debug'
 require './lib/game'
 
 describe Game do
-  describe 'game behaviour' do
-    it 'what it must do' do
-      # for now this "test" is only used as a quick way to launch the app from
-      # my editor. I am aware that it does not make any useful assertions, and
-      # that as part of a CI/CD suite it would no work, since the process will
-      # hang waiting for $stdin to receive input
-      Game.new
+  let(:game) { Game.new }
 
-      assert true
+  describe '#over?' do
+    describe 'when the game has not started yet' do
+      it 'is not over' do
+        refute game.over?
+      end
+    end
+  end
+
+  describe '#start' do
+    it 'returns the expected messages' do
+      assert_equal([], game.start)
     end
   end
 end
