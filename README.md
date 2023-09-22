@@ -1,13 +1,15 @@
-### TicTacToe
+# TicTacToe
 
 To play the game run `ruby play.rb`.
 To run the tests run `rake`. You may need to install with `bundle install` first.
 
 ## Design considerations
 
-Initially I was unfamiliar with a paradigm like this where I have to perform business logic operations in the same place where the information is then presented to the user. I am more familiar with patterns where the business logic is separate from the presentation layer.
+I am used to developing in an environment where the business logic is several layers removed from the presentation layer. Initially I was a bit disoriented thinking in this different environment.
 
-I am not very happy with the current implementation, and I would like to create a Session class that basically implements IO operations and passes messages back and forth between the player and the game. Right now it is not easy to test the Game class, because it expects inputs from $stdin and prints text to $stout. For now I am getting around this constraint with DI (Dependency Inject), but it is not easily interoperable with other possible use-cases such as putting this on a webserver that might return HTML and pass controller params into the Game class instances. With the implementation of a session class I can simply send messages to the Game class and receive arrays of string messages back that I will then present to the user.
+This implementation is not perfect, but I have to stop somewhere, right? If I spent more time on this I would like to create a Session class that interfaces with IO. It would pass messages back and forth between the player using a CLI and the Game instance.
+
+Right now it is not easy to test the Game class, because it expects inputs from $stdin and prints text to $stout. I am getting around this with DI (Dependency Inject), but it is not easily interoperable with other possible uses for the Game class such as putting this on a webserver that might return HTML and pass controller params into the Game class instances.
 
 That Session class would look something  like this:
 
@@ -45,4 +47,4 @@ end
 
 ## Code comments
 
-I have littered the code with a few comments explaining my considerations and how I might do things differently. Normally I do not comment code like this. Code should be self-documenting, and comments should be use sparingly to explain if something counter-intuitive is being done. These comments would normally be the topics of conversation in a Pull Request.
+I have littered the code with a few comments explaining my considerations and how I might do things differently. Normally I do not comment code like this. Code should be self-documenting, and comments should be use sparingly to explain why something counter-intuitive is being done. These comments would normally be the topics of conversation in a Pull Request.
