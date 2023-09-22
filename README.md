@@ -91,3 +91,8 @@ end
 ## Code comments
 
 I have littered the code with a few comments explaining my considerations and how I might do things differently. Normally I do not comment code like this. Code should be self-documenting, and comments should be used sparingly to explain why something counter-intuitive is being done. These comments would normally be the topics of conversation in a Pull Request.
+
+
+## Possible future changes
+
+I think it would be fun to add use different presentation layers to play the game. If I can spend the time, I would like to integrate the game with a HTTP server (like Sinatra) so this game can be played by interacting with a browser (it could be chance to use HTMLX). And perhaps a different presentation layer that uses ncurses in the CLI. By adding different presentation layers I would be able to learn the best abstractions for the Game class and related modules.
