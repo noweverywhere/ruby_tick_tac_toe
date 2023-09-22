@@ -47,4 +47,4 @@ end
 
 ## Code comments
 
-I have littered the code with a few comments explaining my considerations and how I might do things differently. Normally I do not comment code like this. Code should be self-documenting, and comments should be use sparingly to explain why something counter-intuitive is being done. These comments would normally be the topics of conversation in a Pull Request.
+I have littered the code with a few comments explaining my considerations and how I might do things differently. Normally I do not comment code like this. Code should be self-documenting, and comments should be used sparingly to explain why something counter-intuitive is being done. These comments would normally be the topics of conversation in a Pull Request.
