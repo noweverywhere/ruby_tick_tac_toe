@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'debug', '~> 1.8'
 gem 'minitest'
 
-gem "debug", "~> 1.8"
+gem "rake", "~> 13.0"
