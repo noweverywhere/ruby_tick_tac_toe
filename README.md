@@ -5,11 +5,11 @@ To run the tests run `rake`. You may need to install with `bundle install` first
 
 ## Design considerations
 
-I am used to developing in an environment where the business logic is several layers removed from the presentation layer. Initially I was a bit disoriented thinking in this different environment.
+I am familiar with developing in an environment where the business logic is several layers removed from the presentation layer. Initially I was a bit disoriented thinking in this different environment.
 
 This implementation is not perfect, but I have to stop somewhere, right? If I spent more time on this I would like to create a Session class that interfaces with IO. It would pass messages back and forth between the player using a CLI and the Game instance.
 
-Right now it is not easy to test the Game class, because it expects inputs from $stdin and prints text to $stout. I am getting around this with DI (Dependency Inject), but it is not easily interoperable with other possible uses for the Game class such as putting this on a webserver that might return HTML and pass controller params into the Game class instances.
+Right now it is not easy to test the Game class, because it expects inputs from $stdin and prints text to $stout. I am getting around this with DI (Dependency Injection), but it is not easily interoperable with other possible uses for the Game class such as putting this on a webserver that might return HTML and pass controller params into the Game class instances.
 
 That Session class would look something  like this:
 
