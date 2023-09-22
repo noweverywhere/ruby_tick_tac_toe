@@ -1,3 +1,7 @@
 require './lib/game'
 
-Game.new.start
+begin
+  Game.new.start
+rescue Interrupt => e
+  puts "\nGame ended"
+end
