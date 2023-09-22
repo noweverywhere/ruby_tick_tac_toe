@@ -1,4 +1,4 @@
-class TicTacToe
+module TicTacToe
   def self.stalemate?(players, grid)
     players.none? { |player| winner?(player, grid) } && grid.flatten.none?(&:nil?)
   end
