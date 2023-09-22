@@ -5,8 +5,9 @@ require_relative 'tic_tac_toe'
 class Game
   BOARD_SIZE = 3
 
-  def initialize(user_input: $stdin)
+  def initialize(user_input: $stdin, output: $stdout)
     @user_input = user_input
+    @output = output
     @board = Board.new(dimensions: BOARD_SIZE)
     @players = [
       Player.new(name: 'Player 1', symbol: 'X'),
@@ -94,7 +95,7 @@ class Game
   end
 
   def print_message(message)
-    puts (message.is_a?(Array) ? message.join("\r") : message).gsub(/^\s+/, '')
+    @output.puts (message.is_a?(Array) ? message.join("\r") : message).gsub(/^\s+/, '')
   end
 
   def valid_format_explanation
